@@ -23,10 +23,9 @@ else
    %ones
    [~, I] = sort(dist,2); % I is a matrix. Each row is the sorted distance of testing data from the training data
    K_indecies = I(:,1:K); % first K columns of I
-   for col = 1:size(K_indecies,2)
-       K_labels(:,col) = Ytrain(K_indecies(:,col));
-   end
-   Ytest_hat = round(mean(K_labels,2));
+   k_labels = Ytrain()
+   
+   
 end
 
 

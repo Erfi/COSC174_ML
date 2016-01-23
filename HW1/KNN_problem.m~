@@ -34,7 +34,5 @@ xlabel('K');
 ylabel('Training/Testing Errors');
 legend('Training Error','Testing Error');
 
-%===============================
-%=== Optimal K value ---> 2 ====
-%===============================
+%=== Optimal K value = 
  
