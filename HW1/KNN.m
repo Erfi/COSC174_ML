@@ -26,7 +26,7 @@ else
    for col = 1:size(K_indecies,2)
        K_labels(:,col) = Ytrain(K_indecies(:,col));
    end
-   Ytest_hat = round(mean(K_labels,2));
+   Ytest_hat = mode(K_labels,2);
 end
 
 

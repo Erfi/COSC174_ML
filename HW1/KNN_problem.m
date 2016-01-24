@@ -27,7 +27,7 @@ for K = 1:9
 end
 
 %==========Plot the errors============
-kLen = [1:1:K];
+kLen = [1:K];
 plot(kLen, Error_train, kLen, Error_test);
 title('Training Error and Testing Error');
 xlabel('K');
@@ -35,6 +35,6 @@ ylabel('Training/Testing Errors');
 legend('Training Error','Testing Error');
 
 %===============================
-%=== Optimal K value ---> 2 ====
+%== Optimal K value ---> 5,6,7 =
 %===============================
  

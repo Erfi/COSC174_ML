@@ -11,7 +11,7 @@ function Ytest_hat = WeightedKNN(Xtest, K, w, Xtrain, Ytrain)
 % Output: 
 %    -- Ytest_hat: predicted target value on the test data 
 
-if all(w==1) && (K==1)
+if all(w==1) and (K==1)
     dist=pairwise_distance(Xtest, Xtrain);
     [~, maxindex]  = min(dist, [], 2);
     Ytest_hat = Ytrain(maxindex);
@@ -53,11 +53,10 @@ function dist = pairwise_weighted_distance(X1, X2, w)
 
 n1 = size(X1,1);
 n2 = size(X2,1);
-X1
-X1*diag(w)
+var1 = repmat(sum((X1*diag(w)).^2,2), 1, n2);
 
-var1 = repmat(sum((X1*diag(w)).^2,2), 1, n2); %broken down to three parts for debugging purposes
-var2 = repmat(sum((X2*diag(w)).^2,2)', n1, 1);
+var2 = repmat(sum((X2*diag(w)).^2, 2)', n1, 1);
+
 var3 = ((X1*diag(w))*(X2*diag(w))');
 
 dist=sqrt(var1 + var2 - 2*var3);
