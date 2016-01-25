@@ -29,8 +29,6 @@ else
    Ytest_hat = mode(K_labels,2); 
 end
 
-
-
 return;
 end
 
@@ -53,8 +51,6 @@ function dist = pairwise_weighted_distance(X1, X2, w)
 
 n1 = size(X1,1);
 n2 = size(X2,1);
-X1
-X1*diag(w)
 
 var1 = repmat(sum((X1*diag(w)).^2,2), 1, n2); %broken down to three parts for debugging purposes
 var2 = repmat(sum((X2*diag(w)).^2,2)', n1, 1);
