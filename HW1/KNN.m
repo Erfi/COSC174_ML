@@ -15,9 +15,6 @@ if K == 1
     [~, maxindex]  = min(dist, [], 2);
     Ytest_hat = Ytrain(maxindex);
 else
-   % Please complete the case when K > 1. 
-   % sort.m function can be useful   
-   % You are not allowed to use the matlab knn function (such as ClassificationKNN). 
    dist = pairwise_distance(Xtest, Xtrain);
    %now sort the each row of the dist and return the index of the first k
    %ones
@@ -28,9 +25,6 @@ else
    end
    Ytest_hat = mode(K_labels,2);
 end
-
-
-
 return;
 end
 
