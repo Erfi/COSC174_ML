@@ -9,4 +9,7 @@ function  theta = LinearRegWL2_train(Xtrain, Ytrain, alpha, w)
 % Outputs: 
 %     -- theta: (1 X d) the parameter
 
-% please complete the code
+%trying to solve Ax=B where A = (XX+aW), B = (YX), and x = theta
+A = (Xtrain'*Xtrain + diag(alpha*w));
+B = (Ytrain'*Xtrain);
+theta = (A\B')';

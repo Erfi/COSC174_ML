@@ -6,7 +6,7 @@ figure; hold on;
 plot(Xtrain, Ytrain, 'o');
 
 %% Run polynomial Regression 
-
+% 
 poly_order = 10; % order of the polynomial feature
 alpha = 1;       % regularization parameter
 w = [0, ones(1,poly_order)]; % weights in L2 norm; we set w(1)=0 so that we do not regularize on the constant term. 
@@ -17,11 +17,11 @@ theta = LinearRegWL2_train(poly_feature(Xtrain, poly_order),  Ytrain, alpha, w);
 hatYtest = LinearRegWL2_predict(poly_feature(Xtest,poly_order), theta); % testing
 err_test = calculate_mse_Ytest_curveData(hatYtest); % calculate mse = mean((Ytest-hatYtest).^2);
 fprintf('Testing Error is %d\n', err_test);
-
+% 
 % plot the curve 
 Xgrid = linspace(0,10,100)';
 hatYgrid = LinearRegWL2_predict(poly_feature(Xgrid,poly_order), theta); % testing
-
+% 
 figure; hold on;
 plot(Xtrain, Ytrain, 'o');
 plot(Xgrid, hatYgrid, '-');
