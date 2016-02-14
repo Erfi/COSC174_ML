@@ -7,8 +7,8 @@ plot(Xtrain, Ytrain, 'o');
 
 %% Run polynomial Regression 
 % 
-poly_order = 5; % order of the polynomial feature
-alpha = 0;       % regularization parameter
+poly_order = 10; % order of the polynomial feature
+alpha = 1;       % regularization parameter
 w = [0, ones(1,poly_order)]; % weights in L2 norm; we set w(1)=0 so that we do not regularize on the constant term. 
 
 % Apply linear regression on the polynomial feature to the data with a
@@ -58,7 +58,7 @@ for i = 1:length(alphaVec)
     err_xVar_Vec(i) = cross_validation(Xtrain, Ytrain, Nfold, train_func, evaluate_func);
 end
 [~,I] = min(err_xVar_Vec);
-alphabest = alphaVec(I)
+alphabest = alphaVec(I);
 % Rerun your model with the best alpha and evaluate your performance 
 theta = LinearRegWL2_train(poly_feature(Xtrain, poly_order),  Ytrain, alphabest, w); % training
 hatYtest = LinearRegWL2_predict(poly_feature(Xtest,poly_order), theta); % testing
@@ -78,12 +78,9 @@ for i = 1:length(alphaVec)
     evaluate_func = @(x, y, th)(mean((LinearRegWL2_predict(poly_feature(x, poly_order), th) - y).^2));
     err_xVar_Vec(i) = cross_validation(Xtrain, Ytrain, Nfold, train_func, evaluate_func);
 end
-[~,I] = min(err_xVar_Vec);
-poly_order_best = poly_order_Vec(I)
+%poly_order_best = ....
 % Rerun your model with the best poly_order
-w = [0, ones(1,poly_order_best)];
-theta = LinearRegWL2_train(poly_feature(Xtrain, poly_order_best),  Ytrain, alpha, w); % training
-hatYtest =  LinearRegWL2_predict(poly_feature(Xtest,poly_order_best), theta); % testing
+% hatYtest = ....  please complate the code 
 err_test = calculate_mse_Ytest_curveData(hatYtest); % calculate mse = mean((Ytest-hatYtest).^2);
 fprintf('Testing Error is %d\n', err_test);
 

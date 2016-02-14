@@ -7,7 +7,4 @@ function  hatYtest = LinearRegWL2_predict(Xtest, theta)
 % Outputs: 
 %    -- hatYtest: (n X 1) prediction on the testing data points
 
-disp('hi');
-size(Xtest)
-size(theta)
 hatYtest = Xtest*theta';

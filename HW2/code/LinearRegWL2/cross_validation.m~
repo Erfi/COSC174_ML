@@ -25,12 +25,13 @@ if Nfold == 2
     
                 
 else 
+   error('Please complete your code for general Nfold'); 
    n = size(Xtrain,1); %size of the training set
    K = ceil(n/Nfold);%max length of each fold
    startIndex = 1;%start of a sub-dataset
    endIndex = K;%end of a sub-dataset
    for i = 1:Nfold
-      set{i} = startIndex:endIndex;
+      set(i) = startIndex:endIndex; 
       if(i+1 ~= Nfold) %if not the second to last set
         startIndex = endIndex+1;
         endIndex = endIndex+K;
@@ -42,14 +43,16 @@ else
    
    errIndex = 1;
    for j = 1:Nfold %how many times to train
-       theta=train_func(Xtrain(set{j},:), Ytrain(set{j},:)); % train on set(j)
+       theta=train_func(Xtrain(set(j),:), Ytrain(set(j),:)); % train on set(j)
        for k = 1:Nfold
-          if(k ~= j)%don't test on the training subset, that's cheating!
-              err_xVar_Vec(errIndex)=evaluate_func(Xtrain(set{k},:), Ytrain(set{k},:), theta);  % test on set(k)
+          if(k ~= j)%don't test of the training subset, that's cheating!
+              err_xVar_Vec(errIndex)=evaluate_func(Xtrain(set(k),:), Ytrain(set(k),:), theta);  % test on set2
               errIndex = errIndex+1;
           end
        end
    end
-   err_xVar = mean(err_xVar_Vec); % average the error rates  
+   
+   
+
 end
 
