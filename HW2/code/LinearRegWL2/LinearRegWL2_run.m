@@ -70,7 +70,7 @@ fprintf('Testing Error is %d\n', err_test);
 Nfold = 5;
 alpha = .1;
 poly_order_Vec = [1,2,3,4,5,10,20];
-for i = 1:length(alphaVec)
+for i = 1:length(poly_order_Vec)
     poly_order  = poly_order_Vec(i);
     w = [0, ones(1,poly_order)]; % weights in L2 norm; we set w(1)=0 so that we do not regularize on the constant term.     
     %... please complete the code
