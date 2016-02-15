@@ -15,6 +15,7 @@ function [y, dydx] = logsumexp(x)
 % dydx = exp(x)./repmat(sum(exp(x),2), 1, size(x,2));%with over/under flow problem
 
 tMax = max(x, [], 2);%n X 1 vector containing the maximum of each row of x
-y = tMax + log(sum(exp(x-repmat(tMax,1,size(x,2)))));
-dydx = exp(x-repmat(tMax,1,size(x,2))) ./ repmat(sum(exp(x-repmat(tMax,1,size(x,2)))),1,size(x,2));
+var = log(sum(exp(x-repmat(tMax,1,size(x,2))),2));
+y = tMax + var;
+dydx = exp(x-repmat(tMax,1,size(x,2))) ./ repmat(sum(exp(x-repmat(tMax,1,size(x,2))),2),1,size(x,2));
 

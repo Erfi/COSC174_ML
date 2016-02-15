@@ -15,6 +15,8 @@ f = Xtest*theta';
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 % Please complete the code here
-Pyx = ...  
-hatYtest = ...     
+f = bsxfun(@minus, t, max(t, [], 1));% to deal with the over/under flow (basically the same as logsumexp())
+Pyx = exp(t);%hypothesis
+Pyx = bsxfun(@rdivide, Pyx, sum(Pyx));
+% hatYtest =    
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -12,7 +12,6 @@ Y = 1 + (rand(n,1)>=pyx(:,1)); % sample Y from p(y|x)
 % Verifying the gradient of logsumexp
 [y,dy]=logsumexp([1000,1001.2, 999.9])
 [y,dy]=logsumexp([-1000,-1001])
-
 %% Verifying your negative log-likelihood function: if it is correct, it should achieves the minimum value at the true parameter thetaTrue
 alpha = 0;
 noise = randn(size(thetaTrue));
