@@ -13,7 +13,7 @@ function [mse, grad] = nn_MSE(X , Y, net)
 %   - grad.V (h X d): gradients of MSE w.r.t. V
 
 
-
+n = size(X,1);
 h = size(net.V,1);
 d = size(net.V,2);
     
@@ -24,9 +24,16 @@ mse = mean((hatY - Y).^2); % calculate MSE
 %% compute the gradients (please debug!!)
 if nargout > 1    
     % calculating the gradient w.r.t. w: size(grad.w) = 1 X h;
-    grad.w = 2*(Y - hatY)'*sigmoid(net.V*X')'/n; 
+    grad.w = 2*(Y - hatY)'*sigmoid(net.V*X')'/n;
+%     size(sigmoid(net.V*X'))
+%     size(net.V)
+%     size(X)
+%     size(net.w)
     % calculating the gradient w.r.t. V: size(grad.V) = h X d;
-    grad.V = 2*((repmat(Y-hatY, 1, d).* sigmoid(net.V*X')')*X) .* repmat(net.w,1,d)/n;
+    grad.V = (2/n)*diag(net.w)*dsigmoid(net.V*X')*(X.*repmat(Y-hatY,1,d));
+    
+    
+%     diag(net.w)*dsigmoid(net.V*X')*repmat(Y-hatY,1,d)*X';
 end
 
 return;
