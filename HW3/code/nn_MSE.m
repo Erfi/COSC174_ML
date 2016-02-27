@@ -24,16 +24,9 @@ mse = mean((hatY - Y).^2); % calculate MSE
 %% compute the gradients (please debug!!)
 if nargout > 1    
     % calculating the gradient w.r.t. w: size(grad.w) = 1 X h;
-    grad.w = 2*(Y - hatY)'*sigmoid(net.V*X')'/n;
-%     size(sigmoid(net.V*X'))
-%     size(net.V)
-%     size(X)
-%     size(net.w)
+    grad.w = -2*(Y - hatY)'*sigmoid(net.V*X')'/n;
     % calculating the gradient w.r.t. V: size(grad.V) = h X d;
-    grad.V = (2/n)*diag(net.w)*dsigmoid(net.V*X')*(X.*repmat(Y-hatY,1,d));
-    
-    
-%     diag(net.w)*dsigmoid(net.V*X')*repmat(Y-hatY,1,d)*X';
+    grad.V = (-2/n)*diag(net.w)*dsigmoid(net.V*X')*(X.*repmat(Y-hatY,1,d));
 end
 
 return;

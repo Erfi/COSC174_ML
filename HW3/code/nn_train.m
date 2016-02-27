@@ -30,9 +30,9 @@ for iter = 1:params.max_epoches
         Xbatch = X(batch, :); Ybatch = Y(batch);
         
         % please complete the code
-        [~, grad] = ...
-        net.w = ...
-        net.V = ...      
+        [~, grad] = nn_MSE(Xbatch, Ybatch, net);
+        net.w = net.w - (params.step_size/params.batch_size)*grad.w;
+        net.V = net.V - (params.step_size/params.batch_size)*grad.V;
         
     end
           

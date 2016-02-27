@@ -1,0 +1,17 @@
+function [ entropy ] = getEntropy( numYes, numNo )
+% for calculating the entropy of one column
+% number of yesses and nos in a column
+%THIS IS A HACK BECAUSE WE ARE ASSUMING BINARY VALUES
+total = numYes + numNo;
+
+a = numYes/total;
+b = numNo/total;
+
+c = -a*log2(a);
+d = -b*log2(b);
+
+if(a = 0)
+entropy = -a*log2(a) -b*log2(b);
+
+end
+
